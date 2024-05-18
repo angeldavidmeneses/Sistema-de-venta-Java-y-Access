@@ -39,7 +39,7 @@ public class VentaDao {
         int id = 0;
         String sql = "SELECT MAX(id) FROM ventas";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -54,7 +54,7 @@ public class VentaDao {
     public int RegistrarVenta(Venta v){
         String sql = "INSERT INTO ventas (cliente, vendedor, total, fecha) VALUES (?,?,?,?)";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setInt(1, v.getCliente());
             ps.setString(2, v.getVendedor());
@@ -76,7 +76,7 @@ public class VentaDao {
     public int RegistrarDetalle(Detalle Dv){
        String sql = "INSERT INTO detalle (id_pro, cantidad, precio, id_venta) VALUES (?,?,?,?)";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setInt(1, Dv.getId_pro());
             ps.setInt(2, Dv.getCantidad());
@@ -98,7 +98,7 @@ public class VentaDao {
     public boolean ActualizarStock(int cant, int id){
         String sql = "UPDATE productos SET stock = ? WHERE id = ?";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setInt(1,cant);
             ps.setInt(2, id);
@@ -114,7 +114,7 @@ public class VentaDao {
        List<Venta> ListaVenta = new ArrayList();
        String sql = "SELECT c.id AS id_cli, c.nombre, v.* FROM clientes c INNER JOIN ventas v ON c.id = v.cliente";
        try {
-           con = cn.getConnection();
+           con = cn.getConectarBD();
            ps = con.prepareStatement(sql);
            rs = ps.executeQuery();
            while (rs.next()) {               
@@ -134,7 +134,7 @@ public class VentaDao {
         Venta cl = new Venta();
         String sql = "SELECT * FROM ventas WHERE id = ?";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -179,7 +179,7 @@ public class VentaDao {
             String config = "SELECT * FROM config";
             String mensaje = "";
             try {
-                con = cn.getConnection();
+                con = cn.getConectarBD();
                 ps = con.prepareStatement(config);
                 rs = ps.executeQuery();
                 if (rs.next()) {

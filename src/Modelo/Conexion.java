@@ -1,26 +1,35 @@
 package Modelo;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.filechooser.FileSystemView;
-
+ 
 public class Conexion {
-
-    Connection con;
-
-    public Connection getConnection() {
+    
+    Connection SQLConexion;
+    
+    public Conexion (){
+        String host = "localhost";
+        String puerto = "3306";
+        String nameBD = "sistemaventa";
+        
+        String usuario = "root";
+        String pass = "";
+        
+        String driver = "com.mysql.cj.jdbc.Driver";
+        
+        String databaseURL = "jdbc:mysql://" + host + ":" + puerto + "/" + nameBD + "?useSSL=false";
+        
         try {
-            String url = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
-            File salida = new File(url + File.separator+ "sis_java.accdb");
-            String access = "jdbc:ucanaccess://" + salida;
-            con = DriverManager.getConnection(access);
-            return con;
-        } catch (SQLException e) {
-            System.out.println(e.toString());
+            Class.forName(driver);
+            SQLConexion = DriverManager.getConnection(databaseURL, usuario, pass);
+            System.out.println("Base de datos conectada");
+        } catch(Exception ex) {
+            ex.printStackTrace(); // Agregamos una línea para imprimir la traza del error en consola
         }
-        return null;
     }
 
+    public Connection getConectarBD() {
+        return SQLConexion;
+    }
 }
+

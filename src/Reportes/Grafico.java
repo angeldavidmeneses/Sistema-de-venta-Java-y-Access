@@ -19,7 +19,7 @@ public class Grafico {
         ResultSet rs;
         try {
             String sql = "SELECT total FROM ventas WHERE fecha = ?";
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setString(1, fecha);
             rs = ps.executeQuery();

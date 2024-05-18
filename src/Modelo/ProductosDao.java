@@ -17,7 +17,7 @@ public class ProductosDao {
     public boolean RegistrarProductos(Productos pro){
         String sql = "INSERT INTO productos (codigo, nombre, proveedor, stock, precio) VALUES (?,?,?,?,?)";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setString(1, pro.getCodigo());
             ps.setString(2, pro.getNombre());
@@ -36,7 +36,7 @@ public class ProductosDao {
        List<Productos> Listapro = new ArrayList();
        String sql = "SELECT pr.id AS id_proveedor, pr.nombre AS nombre_proveedor, p.* FROM proveedor pr INNER JOIN productos p ON pr.id = p.proveedor ORDER BY p.id DESC";
        try {
-           con = cn.getConnection();
+           con = cn.getConectarBD();
            ps = con.prepareStatement(sql);
            rs = ps.executeQuery();
            while (rs.next()) {               
@@ -103,7 +103,7 @@ public class ProductosDao {
         Productos producto = new Productos();
         String sql = "SELECT * FROM productos WHERE codigo = ?";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setString(1, cod);
             rs = ps.executeQuery();
@@ -122,7 +122,7 @@ public class ProductosDao {
         Productos pro = new Productos();
         String sql = "SELECT pr.id AS id_proveedor, pr.nombre AS nombre_proveedor, p.* FROM proveedor pr INNER JOIN productos p ON p.proveedor = pr.id WHERE p.id = ?";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
@@ -144,7 +144,7 @@ public class ProductosDao {
         Proveedor pr = new Proveedor();
         String sql = "SELECT * FROM proveedor WHERE nombre = ?";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             rs = ps.executeQuery();
@@ -160,7 +160,7 @@ public class ProductosDao {
         Config conf = new Config();
         String sql = "SELECT * FROM config";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {

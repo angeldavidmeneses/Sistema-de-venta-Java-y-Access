@@ -25,9 +25,9 @@ public class ClienteDao {
     ResultSet rs;
     
     public boolean RegistrarCliente(Cliente cl){
-        String sql = "INSERT INTO clientes (dni, nombre, telefono, direccion) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO clientes (id, nombre, telefono, direccion) VALUES (?,?,?,?)";
         try {
-            con = cn.getConnection();
+            con = cn.getConectarBD();
             ps = con.prepareStatement(sql);
             ps.setString(1, cl.getDni());
             ps.setString(2, cl.getNombre());
@@ -36,6 +36,8 @@ public class ClienteDao {
             ps.execute();
             return true;
         } catch (SQLException e) {
+            System.out.println(e.toString());
+            e.printStackTrace(); 
             JOptionPane.showMessageDialog(null, e.toString());
             return false;
         }finally{
@@ -51,21 +53,21 @@ public class ClienteDao {
        List<Cliente> ListaCl = new ArrayList();
        String sql = "SELECT * FROM clientes";
        try {
-           con = cn.getConnection();
+           con = cn.getConectarBD();
            ps = con.prepareStatement(sql);
            rs = ps.executeQuery();
            while (rs.next()) {               
                Cliente cl = new Cliente();
                cl.setId(rs.getInt("id"));
-               cl.setDni(rs.getString("dni"));
+               cl.setDni(rs.getString("id"));
                cl.setNombre(rs.getString("nombre"));
                cl.setTelefono(rs.getString("telefono"));
                cl.setDireccion(rs.getString("direccion"));
                ListaCl.add(cl);
            }
        } catch (SQLException e) {
-           System.out.println(e.toString());
-       }
+            System.out.println(e.toString());
+            e.printStackTrace();        }
        return ListaCl;
    }
    
@@ -89,7 +91,7 @@ public class ClienteDao {
    }
    
    public boolean ModificarCliente(Cliente cl){
-       String sql = "UPDATE clientes SET dni=?, nombre=?, telefono=?, direccion=? WHERE id=?";
+       String sql = "UPDATE clientes SET id=?, nombre=?, telefono=?, direccion=? WHERE id=?";
        try {
            ps = con.prepareStatement(sql);   
            ps.setString(1, cl.getDni());
@@ -111,13 +113,13 @@ public class ClienteDao {
        }
    }
    
-   public Cliente Buscarcliente(int dni){
+   public Cliente Buscarcliente(int id){
        Cliente cl = new Cliente();
-       String sql = "SELECT * FROM clientes WHERE dni = ?";
+       String sql = "SELECT * FROM clientes WHERE id = ?";
        try {
-           con = cn.getConnection();
+           con = cn.getConectarBD();
            ps = con.prepareStatement(sql);
-           ps.setInt(1, dni);
+           ps.setInt(1, id);
            rs = ps.executeQuery();
            if (rs.next()) {
                cl.setId(rs.getInt("id"));
