@@ -112,11 +112,12 @@ public class ProductosDao {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
+                return producto;
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-        return producto;
+        return null;
     }
     public Productos BuscarId(int id){
         Productos pro = new Productos();

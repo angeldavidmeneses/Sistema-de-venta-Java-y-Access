@@ -89,8 +89,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 40, 50));
         jPanel2.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 150, 30));
 
-        btnIniciar.setBackground(new java.awt.Color(51, 0, 51));
-        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar.setBackground(new java.awt.Color(255, 0, 204));
         btnIniciar.setText("Ingresar");
         btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
