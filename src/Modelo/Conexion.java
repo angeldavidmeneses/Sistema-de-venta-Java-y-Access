@@ -2,10 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import org.apache.commons.dbcp2.BasicDataSource;
  
 public class Conexion {
     
-    Connection SQLConexion;
+    private BasicDataSource dataSource;
     
     public Conexion (){
         String host = "localhost";
@@ -20,16 +21,24 @@ public class Conexion {
         String databaseURL = "jdbc:mysql://" + host + ":" + puerto + "/" + nameBD + "?useSSL=false";
         
         try {
-            Class.forName(driver);
-            SQLConexion = DriverManager.getConnection(databaseURL, usuario, pass);
-            System.out.println("Base de datos conectada");
+            dataSource = new BasicDataSource();
+            dataSource.setDriverClassName(driver);
+            dataSource.setUrl(databaseURL);
+            dataSource.setUsername(usuario);
+            dataSource.setPassword(pass);
         } catch(Exception ex) {
             ex.printStackTrace(); // Agregamos una línea para imprimir la traza del error en consola
         }
     }
 
     public Connection getConectarBD() {
-        return SQLConexion;
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return conn;
     }
 }
 

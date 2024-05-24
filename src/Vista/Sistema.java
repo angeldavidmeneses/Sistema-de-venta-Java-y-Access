@@ -779,7 +779,7 @@ public final class Sistema extends javax.swing.JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TableProducto.setForeground(new java.awt.Color(255, 255, 255));
+        TableProducto.setForeground(new java.awt.Color(51, 0, 51));
         TableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
