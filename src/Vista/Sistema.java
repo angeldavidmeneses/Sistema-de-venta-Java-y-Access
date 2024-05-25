@@ -74,14 +74,15 @@ public final class Sistema extends javax.swing.JFrame {
         if (priv.getRol().equals("Asistente")) {
             btnProductos.setEnabled(false);
             btnProveedor.setEnabled(false);
-            //LabelVendedor.setText(priv.getNombre());//
+            LabelVendedor.setText(priv.getNombre());
         }else{
-           // LabelVendedor.setText(priv.getNombre());//
+            LabelVendedor.setText(priv.getNombre());
         }
     }
     public void ListarCliente() {
         List<Cliente> ListarCl = client.ListarCliente();
         modelo = (DefaultTableModel) TableCliente.getModel();
+        modelo.setRowCount(0);
         Object[] ob = new Object[6];
         for (int i = 0; i < ListarCl.size(); i++) {
             ob[0] = ListarCl.get(i).getId();
@@ -104,6 +105,7 @@ public final class Sistema extends javax.swing.JFrame {
             nuevoItem.getPrecioUnitario(),
             nuevoItem.getTotal()
         });
+        TotalPagar();
     }
 
     public void ListarProveedor() {
@@ -169,6 +171,7 @@ public final class Sistema extends javax.swing.JFrame {
     public void ListarVentas() {
         List<Venta> ListarVenta = Vdao.Listarventas();
         modelo = (DefaultTableModel) TableVentas.getModel();
+        modelo.setRowCount(0);
         Object[] ob = new Object[4];
         for (int i = 0; i < ListarVenta.size(); i++) {
             ob[0] = ListarVenta.get(i).getId();
@@ -318,6 +321,7 @@ public final class Sistema extends javax.swing.JFrame {
         btnConfig = new javax.swing.JButton();
         tipo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        LabelVendedor = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1296,6 +1300,10 @@ public final class Sistema extends javax.swing.JFrame {
             }
         });
 
+        LabelVendedor.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        LabelVendedor.setForeground(new java.awt.Color(255, 255, 255));
+        LabelVendedor.setText("jLabel4");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1314,7 +1322,10 @@ public final class Sistema extends javax.swing.JFrame {
                         .addComponent(tipo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(LabelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1322,7 +1333,9 @@ public final class Sistema extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(tipo)
                 .addGap(8, 8, 8)
                 .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1934,6 +1947,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelTotal;
+    private javax.swing.JLabel LabelVendedor;
     private com.toedter.calendar.JDateChooser Midate;
     private javax.swing.JTable TableCliente;
     private javax.swing.JTable TableProducto;
@@ -2098,9 +2112,8 @@ public final class Sistema extends javax.swing.JFrame {
     }
 
     private void RegistrarVenta() {
-        int cliente = Integer.parseInt(txtIdCV.getText());
-        //String vendedor = LabelVendedor.getText();//
-        String vendedor = "esto lo debo cambiar";
+        int cliente = Integer.parseInt(txtRucVenta.getText());
+        String vendedor = LabelVendedor.getText();
         double monto = Totalpagar;
         v.setCliente(cliente);
         v.setVendedor(vendedor);
@@ -2123,8 +2136,7 @@ public final class Sistema extends javax.swing.JFrame {
 
         }
         int cliente = Integer.parseInt(txtIdCV.getText());
-        Vdao.pdfV(id, cliente, Totalpagar,"Esto lo debo cambiar" );
-        // Vdao.pdfV(id, cliente, Totalpagar, LabelVendedor.getText());//
+        Vdao.pdfV(id, cliente, Totalpagar, LabelVendedor.getText());
     }
 
     private void ActualizarStock() {
