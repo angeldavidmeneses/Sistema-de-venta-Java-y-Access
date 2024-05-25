@@ -21,6 +21,7 @@ import Modelo.Venta;
 import Modelo.VentaDao;
 import Modelo.login;
 import Reportes.Grafico;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -484,7 +485,7 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 555, 330));
 
         jPanel9.setBackground(new java.awt.Color(51, 0, 51));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro Cliente"));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -658,7 +659,7 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 57, 558, 310));
 
         jPanel10.setBackground(new java.awt.Color(51, 0, 51));
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Nuevo Proveedor"));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo Proveedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -817,7 +818,7 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel5.add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 25, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(51, 0, 51));
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Nuevo Producto"));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nuevo Producto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel11.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -982,7 +983,8 @@ public final class Sistema extends javax.swing.JFrame {
                 "ID", "CLIENTE", "VENDEDOR", "TOTAL"
             }
         ));
-        TableVentas.setEnabled(false);
+        TableVentas.setEditingColumn(0);
+        TableVentas.setEditingRow(0);
         TableVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableVentasMouseClicked(evt);
@@ -1113,7 +1115,6 @@ public final class Sistema extends javax.swing.JFrame {
             }
         });
 
-        btnIniciar.setBackground(new java.awt.Color(51, 0, 51));
         btnIniciar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnIniciar.setText("REGISTRAR");
         btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
