@@ -72,7 +72,7 @@ CREATE TABLE detalle (
     id_venta INT NOT NULL,
     FOREIGN KEY (id_pro) REFERENCES productos(id),
     FOREIGN KEY (id_venta) REFERENCES ventas(id)
-)
+);
 
 -- Inserción de datos en la tabla usuario
 INSERT INTO usuario (nombre, correo, pass, rol) VALUES
@@ -82,4 +82,4 @@ INSERT INTO usuario (nombre, correo, pass, rol) VALUES
 
 -- Inserción de datos en la tabla config
 INSERT INTO config (ruc, nombre, telefono, direccion, mensaje) VALUES
-('1234567890', 'Empresa Ejemplo', '123-456-7890', '123 Calle Falsa, Ciudad, País', 'Bienvenidos a nuestra empresa. Ofrecemos los mejores productos.');
+('1234567890', 'New Technology', '3207069666', 'calle 42 , Cali, Colombia', 'Gracias por su compra.');

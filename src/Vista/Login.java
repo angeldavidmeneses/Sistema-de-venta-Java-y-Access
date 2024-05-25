@@ -20,8 +20,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        txtCorreo.setText("angel@gmail.com");
-        txtPass.setText("12345");
+        txtCorreo.setText("");
+        txtPass.setText("");
     }
     public void validar(){
         String correo = txtCorreo.getText();

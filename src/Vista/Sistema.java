@@ -464,7 +464,7 @@ public final class Sistema extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "DNI/RUC", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
+                "ID", "CC/NIT", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
             }
         ));
         TableCliente.setEnabled(false);
@@ -638,7 +638,7 @@ public final class Sistema extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "RUC", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
+                "ID", "NIT", "NOMBRE", "TELÉFONO", "DIRECCIÓN"
             }
         ));
         TableProveedor.setEnabled(false);
@@ -1760,6 +1760,12 @@ public final class Sistema extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
       String codigo=txtCodigoVenta.getText();
       String cantidadTxt=txtCantidadVenta.getText();
+      
+        if (cantidadTxt.equals("")){
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad", "Error",JOptionPane.ERROR_MESSAGE);
+
+        }
+      
       int cantidad=Integer.parseInt(cantidadTxt);
       Productos productoAComprar=proDao.BuscarPro(codigo);
       if (productoAComprar==null)

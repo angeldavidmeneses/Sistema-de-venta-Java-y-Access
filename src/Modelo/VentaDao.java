@@ -184,7 +184,7 @@ public class VentaDao {
                 rs = ps.executeQuery();
                 if (rs.next()) {
                     mensaje = rs.getString("mensaje");
-                    Encabezado.addCell("Ruc:    " + rs.getString("ruc") + "\nNombre: " + rs.getString("nombre") + "\nTeléfono: " + rs.getString("telefono") + "\nDirección: " + rs.getString("direccion") + "\n\n");
+                    Encabezado.addCell("NIT:    " + rs.getString("ruc") + "\nNombre: " + rs.getString("nombre") + "\nTeléfono: " + rs.getString("telefono") + "\nDirección: " + rs.getString("direccion") + "\n\n");
                 }
             } catch (SQLException e) {
                 System.out.println(e.toString());
