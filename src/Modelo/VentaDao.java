@@ -163,7 +163,7 @@ public class VentaDao {
             Image img = Image.getInstance(getClass().getResource("/Img/logo_pdf.png"));
             //Fecha
             Paragraph fecha = new Paragraph();
-            Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.BLUE);
+            Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.WHITE);
             fecha.add(Chunk.NEWLINE);
             fecha.add("Vendedor: " + usuario + "\nFolio: " + idventa + "\nFecha: "
                     + new SimpleDateFormat("dd/MM/yyyy").format(date) + "\n\n");
@@ -247,10 +247,10 @@ public class VentaDao {
             c2.setBorder(Rectangle.NO_BORDER);
             c3.setBorder(Rectangle.NO_BORDER);
             c4.setBorder(Rectangle.NO_BORDER);
-            c1.setBackgroundColor(BaseColor.LIGHT_GRAY);
-            c2.setBackgroundColor(BaseColor.LIGHT_GRAY);
-            c3.setBackgroundColor(BaseColor.LIGHT_GRAY);
-            c4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            c1.setBackgroundColor(BaseColor.BLACK);
+            c2.setBackgroundColor(BaseColor.BLACK);
+            c3.setBackgroundColor(BaseColor.BLACK);
+            c4.setBackgroundColor(BaseColor.BLACK);
             tabla.addCell(c1);
             tabla.addCell(c2);
             tabla.addCell(c3);
@@ -274,7 +274,7 @@ public class VentaDao {
             doc.add(tabla);
             Paragraph info = new Paragraph();
             info.add(Chunk.NEWLINE);
-            info.add("Total S/: " + total);
+            info.add("Total: $ " + total);
             info.setAlignment(Element.ALIGN_RIGHT);
             doc.add(info);
             Paragraph firma = new Paragraph();
